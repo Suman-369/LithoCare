@@ -6,14 +6,14 @@ import { ArrowLeft, MapPin, Phone, User, BatteryCharging, Tag } from "lucide-rea
 import { RequestStatusBadge } from "@/components/dashboard/request-status-badge";
 import { RequestTimeline } from "@/components/requests/request-timeline";
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   return {
     title: `Request Details - LITHOCARE`,
   };
 }
 
-export default async function RequestTrackingPage({ params }: { params: { id: string } }) {
+export default async function RequestTrackingPage({ params }: { params: Promise<{ id: string }> }) {
   const { userId } = await auth();
   const resolvedParams = await params;
   

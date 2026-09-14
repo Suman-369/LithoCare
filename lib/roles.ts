@@ -8,8 +8,9 @@ export async function getUserRole() {
   }
 
   // Try to get from session claims first (if JWT template is configured)
-  if (sessionClaims?.metadata?.role) {
-    return sessionClaims.metadata.role as string;
+  const metadata = sessionClaims?.metadata as Record<string, unknown> | undefined;
+  if (metadata?.role) {
+    return metadata.role as string;
   }
 
   // Fallback: fetch from clerk client
