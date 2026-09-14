@@ -14,7 +14,7 @@ import AboutSection from "./AboutSection";
 import battaryImg from "@/images/b4.png";
 import logoImg from "@/images/Logo.png";
 import { useCart } from "@/components/cart/CartProvider";
-import InstallPrompt from "@/components/InstallPrompt";
+import { PwaInstallButton } from "@/components/pwa-install-button";
 
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -183,7 +183,7 @@ export default function HomePage() {
                 </div>
               </Show>
             </div>
-            <InstallPrompt />
+            <PwaInstallButton />
           </div>
         )}
       </header>
@@ -204,7 +204,10 @@ export default function HomePage() {
             to your destination much faster.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Button className="bg-[#a8e69e] text-black hover:bg-[#96d58d] rounded-full px-8 h-12 text-[15px] font-semibold transition-colors border-none">
+            <Button 
+              onClick={() => router.push("/products")}
+              className="bg-[#a8e69e] text-black hover:bg-[#96d58d] rounded-full px-8 h-12 text-[15px] font-semibold transition-colors border-none"
+            >
               View Product
             </Button>
             <Button

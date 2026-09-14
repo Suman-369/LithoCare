@@ -19,6 +19,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { UserButton, useUser } from "@clerk/nextjs";
+import { PwaInstallButton } from "@/components/pwa-install-button";
 
 const navItems = [
   {
@@ -116,6 +117,9 @@ export function DashboardNavbar() {
                     </div>
                   </div>
                 ))}
+                <div className="pt-4 border-t border-gray-100">
+                  <PwaInstallButton />
+                </div>
               </div>
             </div>
           </SheetContent>
