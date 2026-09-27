@@ -6,7 +6,8 @@ import {
   Menu,
   ArrowLeft,
   LayoutDashboard,
-  Users
+  Users,
+  Briefcase
 } from "lucide-react";
 import {
   Sheet,
@@ -22,19 +23,24 @@ const navItems = [
     items: [
       { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
       { name: "Users", href: "/admin/users", icon: Users },
+      { name: "Business Plans", href: "/admin/business-plans", icon: Briefcase },
     ],
   }
 ];
+
+import { useState } from "react";
 
 export function AdminNavbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useUser();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   const getPageTitle = () => {
     if (pathname === "/admin") return "Admin Dashboard";
     if (pathname === "/admin/users") return "Manage Users";
     if (pathname === "/admin/requests") return "All Service Requests";
+    if (pathname === "/admin/business-plans") return "Business Plan Requests";
     return "Admin Area";
   };
 
@@ -44,7 +50,7 @@ export function AdminNavbar() {
     <header className="sticky top-0 z-30 flex min-h-[4rem] items-center gap-4 border-b border-gray-100 bg-white/95 px-4 md:px-6 backdrop-blur-md py-3 md:py-0">
       {/* Mobile Hamburger & Logo */}
       <div className="md:hidden flex items-center gap-3">
-        <Sheet>
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger className="p-2 -ml-2 text-gray-600 hover:bg-gray-50 rounded-lg cursor-pointer outline-none">
             <Menu className="w-5 h-5" />
           </SheetTrigger>
@@ -57,6 +63,7 @@ export function AdminNavbar() {
               <div className="flex h-16 items-center px-6 border-b border-gray-50">
                 <Link
                   href="/admin"
+                  onClick={() => setSheetOpen(false)}
                   className="text-2xl font-serif font-bold tracking-wider text-black"
                 >
                   LITHOCARE ADMIN
@@ -76,6 +83,7 @@ export function AdminNavbar() {
                           <Link
                             key={item.name}
                             href={item.href}
+                            onClick={() => setSheetOpen(false)}
                             className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-colors ${
                               isActive
                                 ? "bg-gray-900 text-white shadow-sm"

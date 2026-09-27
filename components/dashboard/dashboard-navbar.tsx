@@ -10,6 +10,7 @@ import {
   BatteryCharging,
   History,
   ArrowLeft,
+  CreditCard,
 } from "lucide-react";
 import {
   Sheet,
@@ -39,20 +40,26 @@ const navItems = [
     title: "ACCOUNT",
     items: [
       { name: "My Requests", href: "/dashboard/requests", icon: History },
+      { name: "Purchase Requests", href: "/dashboard/purchase-requests", icon: CreditCard },
     ],
   },
 ];
+
+import { useState } from "react";
 
 export function DashboardNavbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useUser();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   // Helper to get a nice title based on the route
   const getPageTitle = () => {
     if (pathname === "/dashboard") return "Dashboard";
     if (pathname === "/dashboard/battery-service") return "Tell us about your battery";
     if (pathname === "/dashboard/requests") return "My Requests";
+    if (pathname === "/dashboard/purchase-requests") return "Purchase Requests";
+    if (pathname === "/dashboard/plans") return "Business Learning Plans";
     if (pathname === "/dashboard/profile") return "Profile";
     if (pathname === "/dashboard/support") return "Help & Support";
     return "Dashboard";
@@ -65,7 +72,7 @@ export function DashboardNavbar() {
     <header className="sticky top-0 z-30 flex min-h-[4rem] items-center gap-4 border-b border-gray-100 bg-white/95 px-4 md:px-6 backdrop-blur-md py-3 md:py-0">
       {/* Mobile Hamburger & Logo */}
       <div className="md:hidden flex items-center gap-3">
-        <Sheet>
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger className="p-2 -ml-2 text-gray-600 hover:bg-gray-50 rounded-lg cursor-pointer outline-none">
             <Menu className="w-5 h-5" />
           </SheetTrigger>
@@ -78,6 +85,7 @@ export function DashboardNavbar() {
               <div className="flex h-16 items-center px-6 border-b border-gray-50">
                 <Link
                   href="/dashboard"
+                  onClick={() => setSheetOpen(false)}
                   className="text-2xl font-serif font-bold tracking-wider text-black"
                 >
                   LITHOCARE ENERGY
@@ -97,6 +105,7 @@ export function DashboardNavbar() {
                           <Link
                             key={item.name}
                             href={item.href}
+                            onClick={() => setSheetOpen(false)}
                             className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-colors ${
                               isActive
                                 ? "bg-gray-900 text-white shadow-sm"
