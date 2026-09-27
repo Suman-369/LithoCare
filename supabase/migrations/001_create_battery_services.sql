@@ -8,7 +8,6 @@ CREATE TABLE battery_services (
     address TEXT NOT NULL,
 
     battery_brand TEXT NOT NULL,
-    battery_type TEXT NOT NULL,
 
     battery_image_url TEXT,
     battery_image_file_id TEXT,

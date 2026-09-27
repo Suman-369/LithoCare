@@ -21,7 +21,6 @@ export default function Footer() {
           {/* Side-by-Side Links */}
           <nav className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm font-medium text-gray-300">
             <Link href="/" className="hover:text-[#ccff00] transition-colors uppercase tracking-widest">Home</Link>
-            <Link href="/products" className="hover:text-[#ccff00] transition-colors uppercase tracking-widest">Products</Link>
             <Link href="/about" className="hover:text-[#ccff00] transition-colors uppercase tracking-widest">About Us</Link>
             <Link href="#" className="hover:text-[#ccff00] transition-colors uppercase tracking-widest">Contact</Link>
           </nav>
@@ -31,10 +30,11 @@ export default function Footer() {
             <div className="flex bg-white/5 border border-white/10 rounded-full overflow-hidden w-full max-w-md focus-within:border-white/30 transition-colors">
               <input 
                 type="email" 
+                suppressHydrationWarning
                 placeholder="Enter email for updates" 
                 className="bg-transparent text-white px-6 py-3 outline-none w-full text-sm font-medium"
               />
-              <button className="bg-white text-black px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors">
+              <button suppressHydrationWarning className="bg-white text-black px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors">
                 Subscribe
               </button>
             </div>

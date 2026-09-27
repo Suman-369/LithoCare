@@ -2,6 +2,7 @@ import { AppSidebar } from "@/components/dashboard/app-sidebar"
 import { DashboardNavbar } from "@/components/dashboard/dashboard-navbar"
 import { checkRole } from "@/lib/roles"
 import { redirect } from "next/navigation"
+import { getUserMetadata } from "@/lib/roles"
 
 export default async function DashboardLayout({
   children,
@@ -12,6 +13,11 @@ export default async function DashboardLayout({
   
   if (isAdmin) {
     redirect("/admin");
+  }
+
+  const metadata = await getUserMetadata();
+  if (metadata?.hasBusiness === undefined) {
+    redirect("/setup");
   }
 
   return (

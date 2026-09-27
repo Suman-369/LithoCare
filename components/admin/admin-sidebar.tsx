@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Users,
   LogOut,
+  Briefcase,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -24,6 +25,7 @@ const navItems = [
     items: [
       { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
       { name: "Users", href: "/admin/users", icon: Users },
+      { name: "Business Plans", href: "/admin/business-plans", icon: Briefcase },
     ],
   }
 ];

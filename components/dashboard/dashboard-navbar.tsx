@@ -8,7 +8,6 @@ import {
   Search,
   LayoutDashboard,
   BatteryCharging,
-  Bike,
   History,
   ArrowLeft,
 } from "lucide-react";
@@ -29,7 +28,6 @@ const navItems = [
   {
     title: "SERVICES",
     items: [
-      { name: "Two Wheelers", href: "/dashboard/two-wheelers", icon: Bike },
       {
         name: "Battery Service",
         href: "/dashboard/battery-service",
@@ -53,7 +51,6 @@ export function DashboardNavbar() {
   // Helper to get a nice title based on the route
   const getPageTitle = () => {
     if (pathname === "/dashboard") return "Dashboard";
-    if (pathname === "/dashboard/two-wheelers") return "Two Wheeler Products & Services";
     if (pathname === "/dashboard/battery-service") return "Tell us about your battery";
     if (pathname === "/dashboard/requests") return "My Requests";
     if (pathname === "/dashboard/profile") return "Profile";
@@ -63,7 +60,6 @@ export function DashboardNavbar() {
 
   const isDashboard = pathname === "/dashboard";
   const isBatteryService = pathname === "/dashboard/battery-service";
-  const isTwoWheelers = pathname === "/dashboard/two-wheelers";
 
   return (
     <header className="sticky top-0 z-30 flex min-h-[4rem] items-center gap-4 border-b border-gray-100 bg-white/95 px-4 md:px-6 backdrop-blur-md py-3 md:py-0">
@@ -150,11 +146,6 @@ export function DashboardNavbar() {
           <p className="text-xs md:text-sm text-gray-500 truncate mt-0.5">
             Welcome back, {user ? user.firstName : "Loading..."}. What would you
             like to take care of today?
-          </p>
-        )}
-        {isTwoWheelers && (
-          <p className="text-xs md:text-sm text-gray-500 truncate mt-0.5">
-            Explore products designed for your ride. Filter by category to find exactly what you need
           </p>
         )}
         {isBatteryService && (

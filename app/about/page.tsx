@@ -213,12 +213,6 @@ export default function AboutPage() {
             <Link href="/" className="hover:text-white transition-colors">
               Home
             </Link>
-            <Link
-              href="/products"
-              className="hover:text-white transition-colors"
-            >
-              Products
-            </Link>
             <Link href="/about" className="text-white font-medium">
               About
             </Link>
@@ -423,10 +417,10 @@ export default function AboutPage() {
             generation of mobility.
           </p>
           <Link
-            href="/products"
+            href="/dashboard"
             className="inline-block bg-white text-black px-10 py-5 rounded-full text-sm tracking-widest font-bold uppercase hover:scale-105 transition-transform duration-300"
           >
-            Explore Products &rarr;
+            Explore Services &rarr;
           </Link>
         </div>
       </section>

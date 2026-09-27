@@ -17,6 +17,8 @@ export default async function AdminUsersPage() {
             <tr>
               <th className="px-6 py-4">User</th>
               <th className="px-6 py-4">Email</th>
+              <th className="px-6 py-4">Type</th>
+              <th className="px-6 py-4">Mobile</th>
               <th className="px-6 py-4">Role</th>
               <th className="px-6 py-4">Joined</th>
             </tr>
@@ -40,6 +42,18 @@ export default async function AdminUsersPage() {
                 </td>
                 <td className="px-6 py-4 text-gray-500">{user.email || "No email"}</td>
                 <td className="px-6 py-4">
+                  {user.hasBusiness !== undefined ? (
+                    <Badge variant={user.hasBusiness ? "default" : "outline"} className={user.hasBusiness ? "bg-blue-600 hover:bg-blue-700" : ""}>
+                      {user.hasBusiness ? "Business" : "Personal"}
+                    </Badge>
+                  ) : (
+                    <span className="text-gray-400 text-xs">Pending</span>
+                  )}
+                </td>
+                <td className="px-6 py-4 text-gray-500">
+                  {user.mobileNumber ? user.mobileNumber : <span className="text-gray-300">-</span>}
+                </td>
+                <td className="px-6 py-4">
                   <Badge variant={user.role === "admin" ? "default" : "secondary"}>
                     {user.role}
                   </Badge>
@@ -51,7 +65,7 @@ export default async function AdminUsersPage() {
             ))}
             {users.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
                   No users found.
                 </td>
               </tr>

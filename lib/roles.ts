@@ -28,3 +28,27 @@ export async function checkRole(role: string) {
   const userRole = await getUserRole();
   return userRole === role;
 }
+
+export async function getUserMetadata() {
+  const { userId, sessionClaims } = await auth();
+  
+  if (!userId) {
+    return null;
+  }
+
+  // Try to get from session claims first
+  const metadata = sessionClaims?.metadata as Record<string, unknown> | undefined;
+  if (metadata !== undefined) {
+    return metadata;
+  }
+
+  // Fallback: fetch from clerk client
+  try {
+    const client = await clerkClient();
+    const user = await client.users.getUser(userId);
+    return user.publicMetadata;
+  } catch (error) {
+    console.error("Error fetching user metadata:", error);
+    return {};
+  }
+}

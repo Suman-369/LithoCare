@@ -218,7 +218,7 @@ export default function AboutSection() {
           </p>
           
           <div ref={ctaRef}>
-            <button className="group relative px-8 py-4 border border-white/30 rounded-full overflow-hidden hover:border-white transition-colors duration-500">
+            <button suppressHydrationWarning className="group relative px-8 py-4 border border-white/30 rounded-full overflow-hidden hover:border-white transition-colors duration-500">
               <span className="relative z-10 text-sm tracking-widest font-medium uppercase">Explore Our Story &rarr;</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
               <span className="absolute inset-0 z-10 flex items-center justify-center text-sm tracking-widest font-medium uppercase text-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
@@ -312,10 +312,10 @@ export default function AboutSection() {
             Discover the technology, design, and experience behind our next generation of mobility.
           </p>
           <Link 
-            href="/products" 
+            href="/dashboard" 
             className="inline-block bg-white text-black px-10 py-5 rounded-full text-sm tracking-widest font-bold uppercase hover:scale-105 transition-transform duration-300"
           >
-            Explore Products &rarr;
+            Explore Services &rarr;
           </Link>
         </div>
       </section>

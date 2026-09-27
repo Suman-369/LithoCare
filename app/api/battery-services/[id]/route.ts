@@ -8,7 +8,6 @@ const updateServiceSchema = z.object({
   phone_number: z.string().min(10, "Phone number must be at least 10 digits").optional(),
   address: z.string().min(1, "Address is required").optional(),
   battery_brand: z.string().min(1, "Battery brand is required").optional(),
-  battery_type: z.string().min(1, "Battery type is required").optional(),
   battery_image_url: z.string().url().optional().nullable(),
   battery_image_file_id: z.string().optional().nullable(),
   battery_image_path: z.string().optional().nullable(),

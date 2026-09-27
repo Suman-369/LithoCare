@@ -10,6 +10,7 @@ import {
   User,
   LogOut,
   Settings,
+  CreditCard,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -30,7 +31,6 @@ const navItems = [
   {
     title: "SERVICES",
     items: [
-      { name: "Two Wheelers", href: "/dashboard/two-wheelers", icon: Bike },
       {
         name: "Battery Service",
         href: "/dashboard/battery-service",
@@ -42,6 +42,7 @@ const navItems = [
     title: "ACCOUNT",
     items: [
       { name: "My Requests", href: "/dashboard/requests", icon: History },
+      { name: "Purchase Requests", href: "/dashboard/purchase-requests", icon: CreditCard },
     ],
   },
 ];
@@ -102,7 +103,7 @@ export function AppSidebar() {
         <DropdownMenu>
           <DropdownMenuTrigger className="flex w-full items-center gap-3 rounded-xl p-2 hover:bg-gray-50 transition-colors outline-none cursor-pointer">
             <Avatar className="h-9 w-9 border border-gray-100">
-              <AvatarImage src={user?.imageUrl || ""} />
+              <AvatarImage src={user?.imageUrl || undefined} />
               <AvatarFallback className="bg-black text-white text-xs">
                 {user?.firstName?.charAt(0) || ""}
                 {user?.lastName?.charAt(0) || ""}

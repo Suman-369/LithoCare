@@ -76,7 +76,7 @@ export default async function AdminDashboardPage() {
               <tr>
                 <th className="px-4 py-2.5 border-r border-gray-200">Request No.</th>
                 <th className="px-4 py-2.5 border-r border-gray-200">Name</th>
-                <th className="px-4 py-2.5 border-r border-gray-200">Battery Type</th>
+                <th className="px-4 py-2.5 border-r border-gray-200">Battery Brand</th>
                 <th className="px-4 py-2.5 border-r border-gray-200">Status</th>
                 <th className="px-4 py-2.5 border-r border-gray-200">Date</th>
                 <th className="px-4 py-2.5 text-center">Actions</th>
@@ -92,7 +92,7 @@ export default async function AdminDashboardPage() {
                     {req.customer_name || "Unknown"}
                   </td>
                   <td className="px-4 py-2 border-r border-gray-200">
-                    {req.battery_brand} {req.battery_type}
+                    {req.battery_brand}
                   </td>
                   <td className="px-4 py-2 border-r border-gray-200">
                     <RequestStatusBadge status={req.status} className="scale-90 origin-left" />

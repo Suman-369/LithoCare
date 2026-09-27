@@ -27,7 +27,6 @@ export function BatteryServiceForm() {
   
   // Form state
   const [images, setImages] = useState<File[]>([]);
-  const [batteryType, setBatteryType] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,12 +37,6 @@ export function BatteryServiceForm() {
     const phone_number = formData.get("phone") as string;
     const address = formData.get("address") as string;
     const battery_brand = formData.get("batteryName") as string;
-    
-    if (!batteryType) {
-      toast.error("Please select a battery type.");
-      setIsSubmitting(false);
-      return;
-    }
 
     try {
       let imageUrl = null;
@@ -87,7 +80,6 @@ export function BatteryServiceForm() {
           phone_number,
           address,
           battery_brand,
-          battery_type: batteryType,
           battery_image_url: imageUrl,
           battery_image_file_id: imageFileId,
           battery_image_path: imagePath,
@@ -155,24 +147,9 @@ export function BatteryServiceForm() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="space-y-2">
+                <div className="space-y-2 col-span-1 md:col-span-2">
                   <Label htmlFor="batteryName">Battery Brand</Label>
                   <Input id="batteryName" name="batteryName" placeholder="e.g. Exide, Luminous" required className="bg-gray-50/50" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="batteryModel">Battery Type</Label>
-                  <Select required onValueChange={(val: any) => setBatteryType(val || "")} value={batteryType}>
-                    <SelectTrigger id="batteryModel" className="bg-gray-50/50">
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="lead-acid">Lead Acid (Tubular)</SelectItem>
-                      <SelectItem value="lithium-ion">Lithium Ion</SelectItem>
-                      <SelectItem value="gel">Gel Battery</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </div>
             </div>

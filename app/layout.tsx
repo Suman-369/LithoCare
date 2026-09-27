@@ -39,7 +39,6 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { ConditionalFooter } from "@/components/conditional-footer";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
-import { CartProvider } from "@/components/cart/CartProvider";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -61,13 +60,11 @@ export default function RootLayout({ children }: any) {
         suppressHydrationWarning
       >
         <ClerkProvider>
-          <CartProvider>
-            <SmoothScroll>
-              {children}
-              <ConditionalFooter />
-            </SmoothScroll>
-            <Toaster richColors />
-          </CartProvider>
+          <SmoothScroll>
+            {children}
+            <ConditionalFooter />
+          </SmoothScroll>
+          <Toaster richColors />
         </ClerkProvider>
       </body>
     </html>

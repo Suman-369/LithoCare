@@ -9,11 +9,9 @@ import { Button } from "@/components/ui/button";
 import scooterImg from "@/images/HomeCar.png";
 import arrowImg from "@/images/arrow.png";
 import { useHomeAnimation } from "../animations/useHomeAnimation";
-import ProductsSection from "./ProductsSection";
 import AboutSection from "./AboutSection";
 import battaryImg from "@/images/b4.png";
 import logoImg from "@/images/Logo.png";
-import { useCart } from "@/components/cart/CartProvider";
 import { PwaInstallButton } from "@/components/pwa-install-button";
 
 export default function HomePage() {
@@ -26,7 +24,6 @@ export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isSignedIn } = useAuth();
   const router = useRouter();
-  const { cartCount } = useCart();
   const [mounted, setMounted] = useState(false);
 
   React.useEffect(() => {
@@ -65,12 +62,6 @@ export default function HomePage() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-10 text-sm font-medium text-gray-400">
           <Link
-            href="/products"
-            className="flex items-center text-white hover:text-[#ccff00] transition-colors"
-          >
-            Products
-          </Link>
-          <Link
             href="/about"
             className="hover:text-[#ccff00] transition-colors text-white"
           >
@@ -82,21 +73,16 @@ export default function HomePage() {
         <div className="hidden lg:flex items-center space-x-4">
           <Show when="signed-in">
             <button 
+              suppressHydrationWarning
               onClick={() => router.push('/dashboard')}
               className="bg-[#1a1a1a] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#222] transition-colors"
             >
               Dashboard
             </button>
           </Show>
-          <Link href="/cart" className="flex items-center bg-[#1a1a1a] rounded-full pl-4 pr-2 py-2 text-sm text-gray-300 hover:bg-[#222] transition-colors">
-            Cart{" "}
-            <span className="ml-3 text-[#a8e69e] border border-gray-600 rounded-full w-6 h-6 flex items-center justify-center text-xs">
-              {mounted ? cartCount : 0}
-            </span>
-          </Link>
           <Show when="signed-out">
             <SignInButton mode="modal">
-              <button className="bg-white text-black px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors">
+              <button suppressHydrationWarning className="bg-white text-black px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors">
                 Login
               </button>
             </SignInButton>
@@ -110,6 +96,7 @@ export default function HomePage() {
 
         {/* Mobile Hamburger */}
         <button
+          suppressHydrationWarning
           className="lg:hidden bg-[#1a1a1a] p-2.5 rounded-full text-white hover:bg-[#222] transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -141,13 +128,6 @@ export default function HomePage() {
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-[#0a0a0a] border-t border-gray-800 p-6 flex flex-col gap-6 shadow-2xl lg:hidden">
             <Link
-              href="/products"
-              className="text-white text-lg font-medium hover:text-[#ccff00]"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Products
-            </Link>
-            <Link
               href="/about"
               className="text-white text-lg font-medium hover:text-[#ccff00]"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -158,21 +138,16 @@ export default function HomePage() {
             <div className="flex gap-4 w-full">
               <Show when="signed-in">
                 <button 
+                  suppressHydrationWarning
                   onClick={() => router.push('/dashboard')}
                   className="flex-1 bg-[#1a1a1a] text-white px-2 py-4 rounded-full text-sm font-medium hover:bg-[#222] transition-colors text-center"
                 >
                   Dashboard
                 </button>
               </Show>
-              <Link href="/cart" className="flex-1 flex items-center justify-center gap-3 bg-[#1a1a1a] rounded-full px-2 py-4 text-white hover:bg-[#222] transition-colors">
-                <span>Cart</span>
-                <span className="text-[#a8e69e] border border-gray-600 rounded-full w-7 h-7 flex items-center justify-center text-sm">
-                  {mounted ? cartCount : 0}
-                </span>
-              </Link>
               <Show when="signed-out">
                 <SignInButton mode="modal">
-                  <button className="flex-1 bg-white text-black px-2 py-4 rounded-full font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors text-center">
+                  <button suppressHydrationWarning className="flex-1 bg-white text-black px-2 py-4 rounded-full font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors text-center">
                     Login
                   </button>
                 </SignInButton>
@@ -204,12 +179,6 @@ export default function HomePage() {
             to your destination much faster.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Button 
-              onClick={() => router.push("/products")}
-              className="bg-[#a8e69e] text-black hover:bg-[#96d58d] rounded-full px-8 h-12 text-[15px] font-semibold transition-colors border-none"
-            >
-              View Product
-            </Button>
             <Button
               variant="outline"
               onClick={handleRideClick}
@@ -318,9 +287,6 @@ export default function HomePage() {
 
       {/* Subtle Background Glows */}
       <div className="fixed top-0 right-0 -z-10 w-96 h-96 bg-[#a8e69e]/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-      {/* E-commerce Products Section */}
-      <ProductsSection />
 
       {/* Cinematic About Section */}
       <AboutSection />

@@ -62,8 +62,8 @@ export default async function AdminRequestDetailPage({ params }: { params: Promi
             <h2 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-50 pb-4">Battery Details</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <p className="text-sm text-gray-500 flex items-center gap-2 mb-1"><BatteryCharging className="w-4 h-4"/> Brand & Type</p>
-                <p className="font-medium text-gray-900">{service.battery_brand} - {service.battery_type}</p>
+                <p className="text-sm text-gray-500 flex items-center gap-2 mb-1"><BatteryCharging className="w-4 h-4"/> Brand</p>
+                <p className="font-medium text-gray-900">{service.battery_brand}</p>
               </div>
             </div>
 

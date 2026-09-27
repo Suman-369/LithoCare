@@ -5,7 +5,6 @@ import { BatteryService, BatteryServiceStatus, BatteryServiceWithHistory } from 
 export async function getAllUsers() {
   const client = await clerkClient();
   const users = await client.users.getUserList();
-  
   return users.data.map(user => ({
     id: user.id,
     firstName: user.firstName,
@@ -13,6 +12,8 @@ export async function getAllUsers() {
     email: user.emailAddresses[0]?.emailAddress,
     imageUrl: user.imageUrl,
     role: (user.publicMetadata?.role as string) || "user",
+    hasBusiness: user.publicMetadata?.hasBusiness as boolean | undefined,
+    mobileNumber: user.publicMetadata?.mobileNumber as string | undefined,
     createdAt: user.createdAt,
   }));
 }

@@ -141,7 +141,7 @@ export default async function RequestsPage({ searchParams }: { searchParams: Pro
                           <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-1">
                             <div className="flex items-center justify-between gap-2">
                               <h3 className="text-[14px] sm:text-[15px] font-semibold text-gray-900 truncate">
-                                {req.battery_brand} {req.battery_type}
+                                {req.battery_brand}
                               </h3>
                               <RequestStatusBadge status={req.status} className="sm:hidden shrink-0 scale-90 origin-right" />
                             </div>

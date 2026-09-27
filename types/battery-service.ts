@@ -8,7 +8,6 @@ export interface BatteryService {
   phone_number: string;
   address: string;
   battery_brand: string;
-  battery_type: string;
   battery_image_url: string | null;
   battery_image_file_id: string | null;
   battery_image_path: string | null;
@@ -36,7 +35,6 @@ export interface CreateBatteryServiceInput {
   phone_number: string;
   address: string;
   battery_brand: string;
-  battery_type: string;
   battery_image_url?: string | null;
   battery_image_file_id?: string | null;
   battery_image_path?: string | null;
@@ -47,7 +45,6 @@ export interface UpdateBatteryServiceInput {
   phone_number?: string;
   address?: string;
   battery_brand?: string;
-  battery_type?: string;
   battery_image_url?: string | null;
   battery_image_file_id?: string | null;
   battery_image_path?: string | null;

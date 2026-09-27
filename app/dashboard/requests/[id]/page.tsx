@@ -63,7 +63,7 @@ export default async function RequestTrackingPage({ params }: { params: Promise<
               <span className="text-[11px] sm:text-sm font-semibold text-gray-900 truncate">{request.request_number || "REQ-PENDING"}</span>
             </div>
             <h1 className="text-base sm:text-2xl font-semibold text-gray-900 tracking-tight mb-1 sm:mb-2 truncate">
-              {request.battery_brand} {request.battery_type}
+              {request.battery_brand}
             </h1>
             <p className="text-[10px] sm:text-[13px] text-gray-500 font-medium truncate">
               Submitted {new Date(request.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' })}
@@ -121,14 +121,10 @@ export default async function RequestTrackingPage({ params }: { params: Promise<
                   <BatteryCharging className="w-8 h-8 text-gray-300" />
                 </div>
               )}
-              <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                 <div>
                   <p className="text-[11px] text-gray-500 font-semibold uppercase tracking-wider mb-1">Brand</p>
                   <p className="text-[15px] font-semibold text-gray-900">{request.battery_brand}</p>
-                </div>
-                <div>
-                  <p className="text-[11px] text-gray-500 font-semibold uppercase tracking-wider mb-1">Type</p>
-                  <p className="text-[15px] font-medium text-gray-700">{request.battery_type}</p>
                 </div>
               </div>
             </div>

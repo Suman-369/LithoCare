@@ -50,7 +50,7 @@ export async function RecentRequests() {
                           </div>
                           <div className="min-w-0">
                             <h4 className="text-[13px] font-medium text-gray-900 truncate">
-                              {req.battery_brand} {req.battery_type}
+                              {req.battery_brand}
                             </h4>
                             <p className="text-[11px] text-gray-500 mt-0.5 font-medium">{req.request_number || "REQ-PENDING"}</p>
                           </div>
